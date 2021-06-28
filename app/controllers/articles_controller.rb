@@ -1,6 +1,6 @@
 class ArticlesController < ApplicationController
   before_filter :set_article, only: [:show, :edit, :update, :destroy]
-  before_filter :require_user, except: [:show, :index]
+  before_filter :require_user, except: [:new, :show, :index]
   before_filter :require_correct_user, only: [:edit, :update, :destroy]
 
   def index
@@ -51,5 +51,9 @@ class ArticlesController < ApplicationController
   end
 
   def require_correct_user
+    if current_user != @article.user
+      flash[:alert] = "You are not authorized"
+      redirect_to @user
+    end
   end
 end

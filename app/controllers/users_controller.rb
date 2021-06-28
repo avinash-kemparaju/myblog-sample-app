@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
   before_filter :set_user, only: [:show, :edit, :update, :destroy]
+  before_filter :require_user, except: [:new, :create, :show]
+  before_filter :require_correct_user, only: [:edit, :update, :destroy]
 
   def new
     @user = User.new
@@ -48,5 +50,12 @@ class UsersController < ApplicationController
 
   def set_user
     @user = User.find(params[:id])
+  end
+
+  def require_correct_user
+    if current_user != @user
+      flash[:alert] = "You are not authorized"
+      redirect_to @user
+    end
   end
 end
