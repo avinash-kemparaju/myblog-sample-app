@@ -57,6 +57,7 @@ Myblog::Application.routes.draw do
   # match ':controller(/:action(/:id))(.:format)'
   resources :users
   resources :articles
-  get 'signin', to: 'sessions#signin'
   get 'signup', to: 'users#new'
+  get 'signin', to: 'sessions#signin'
+  post 'signin', to: 'sessions#create'
 end
