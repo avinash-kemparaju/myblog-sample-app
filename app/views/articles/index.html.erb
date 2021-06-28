@@ -1,3 +1,7 @@
 <%= render 'common/titlecard', title: 'Articles', subtitle: "total #{article_count} articles" %>
 
+<div class="digg_pagination position-relative top-0 start-50 translate-middle mt-3", style="width: 50rem;">
+  <%= paginate @articles %>
+</div>
+
 <%= render 'common/miniarticles', articles: @articles %>
