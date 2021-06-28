@@ -1,1 +1,1 @@
-<%= render 'common/titlecard', title: 'User Details', subtitle: 'created on' %>
+<%= render 'common/titlecard', title: @user.username, subtitle: "created #{time_ago_in_words(@user.created_at)}" %>
