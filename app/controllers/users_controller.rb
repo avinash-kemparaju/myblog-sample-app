@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_filter :set_user, only: [:show, :edit, :update]
+  before_filter :set_user, only: [:show, :edit, :update, :destroy]
 
   def new
     @user = User.new
@@ -29,6 +29,17 @@ class UsersController < ApplicationController
   def update
     if @user.update_attributes(params[:user])
       flash['notice'] = 'Update successful'
+      redirect_to @user
+    end
+  end
+
+  def destroy
+    if @user.destroy
+      session[:user_id] = nil
+      flash['notice'] = 'Account deleted successfully'
+      redirect_to root_path
+    else
+      flash['notice'] = 'Unable to delete account'
       redirect_to @user
     end
   end
