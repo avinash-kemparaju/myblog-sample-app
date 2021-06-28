@@ -1,3 +1,2 @@
-<%= render 'common/titlecard', title: @user.username, subtitle: "Joined #{time_ago_in_words(@user.created_at)}" %>
+<%= render 'common/titlecard', image: gravatar_for(@user, { size: 200 }), title: @user.username, subtitle: "Joined #{time_ago_in_words(@user.created_at)}" %>
 <%= render 'common/miniarticles', articles: @user.articles %>
-
