@@ -11,6 +11,15 @@ class ArticlesController < ApplicationController
   end
 
   def create
+    @article = Article.new(params[:article])
+    @article.user_id = current_user.id
+
+    if @article.save
+      flash[:notice] = "Article created successfully"
+      redirect_to @article
+    else
+      redirect_to current_user
+    end
   end
 
   def edit
