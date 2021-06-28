@@ -3,11 +3,13 @@
 <div class="card mt-3 ms-3" style="width: 50rem;">
   <div class="card-header">
       <%= @article.title %>
+      <% if signed_in? && current_user == @article.user %>
       <a class="position-absolute top-2 end-0 me-2 dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">More</a>
-      <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-        <li><%= link_to "Edit", edit_article_path(@article), class: "dropdown-item" %></li>
-        <li><%= link_to "Delete", article_path(@article), method: :delete, data: { confirm: 'Are you sure?' }, class: "dropdown-item" %></li>
-      </ul>
+        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <li><%= link_to "Edit", edit_article_path(@article), class: "dropdown-item" %></li>
+          <li><%= link_to "Delete", article_path(@article), method: :delete, data: { confirm: 'Are you sure?' }, class: "dropdown-item" %></li>
+        </ul>
+      <% end %>
   </div>
   
   <div class="card-body">
