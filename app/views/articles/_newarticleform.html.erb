@@ -1,0 +1,17 @@
+<div class="card mt-3 ms-3" style="width: 50rem;">
+  <div class="card-body p-3">
+    <%= form_for @article do |article| %>
+      <div class="mb-3">
+        <%= article.label :title, "Article Title", class: "form-label" %>
+        <%= article.text_field :title, class: "form-control" %>
+      </div>
+
+      <div class="mb-3">
+        <%= article.label :desc, "Article Description", class: "form-label" %>
+        <%= article.text_area :desc, class: "form-control" %>
+      </div>
+
+      <%= article.submit(class:"btn btn-primary") %>
+    <% end %>
+  </div>
+</div>
