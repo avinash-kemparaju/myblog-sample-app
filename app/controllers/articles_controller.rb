@@ -4,6 +4,7 @@ class ArticlesController < ApplicationController
   before_filter :require_correct_user, only: [:edit, :update, :destroy]
 
   def index
+    @articles = Article.all
   end
 
   def new
