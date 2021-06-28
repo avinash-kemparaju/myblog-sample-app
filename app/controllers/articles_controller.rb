@@ -29,6 +29,12 @@ class ArticlesController < ApplicationController
   end
 
   def update
+    if @article.update_attributes(params[:article])
+      flash[:notice] = "Article #{@article.id} updated successfully"
+    else
+      flash[:notice] = "Article #{@article.id} update failed"
+    end
+    redirect_to @article
   end
 
   def destroy
