@@ -14,11 +14,11 @@ class SessionsController < ApplicationController
       else
         puts "password mismatch"
         flash[:alert] = "Invalid Sign In details"
-        render 'signin'
+        redirect_to signin_path
       end
     else
       flash[:alert] = "Account not found"
-      render 'signin'
+      redirect_to signin_path
     end
   end
 
