@@ -1,7 +1,6 @@
 class SessionsController < ApplicationController
 
-  def signin
-    @user = User.new
+  def new
   end
 
   def create
@@ -14,12 +13,18 @@ class SessionsController < ApplicationController
         redirect_to user
       else
         puts "password mismatch"
-        flash[:alert] = "Invalid sign-in details"
+        flash[:alert] = "Invalid Sign In details"
         render 'signin'
       end
     else
       flash[:alert] = "Account not found"
       render 'signin'
     end
+  end
+
+  def destroy
+    session[:user_id] = nil
+    flash[:notice] = 'Sign Out successful'
+    redirect_to root_path
   end
 end
