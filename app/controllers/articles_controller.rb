@@ -19,6 +19,7 @@ class ArticlesController < ApplicationController
       flash[:notice] = "Article created successfully"
       redirect_to @article
     else
+      flash[:notice] = "Article creation failed"
       redirect_to current_user
     end
   end
