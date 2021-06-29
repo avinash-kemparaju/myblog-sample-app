@@ -1,1 +1,1 @@
-<h1>Category details</h1>
+<%= render 'common/titlecard', title: @category.name, subtitle: "Created #{time_ago_in_words(@category.created_at)}" %>
