@@ -14,18 +14,17 @@ class CategoriesControllerTest < ActionController::TestCase
     get :new
     assert_response :success
   end
-  #
-  # test "should create category" do
-  #   assert_difference('Category.count') do
-  #     post :create, category: {  }
-  #   end
-  #
-  #   assert_redirected_to category_path(assigns(:category))
-  # end
-  #
+
   test 'should show category' do
     get :show, id: @category
     assert_response :success
+  end
+
+  test 'should create category' do
+    assert_difference('Category.count', 1) do
+      post :create, category: { name: 'Travel' }
+    end
+    assert_redirected_to category_path(assigns(:category))
   end
 
   # test "should get edit" do

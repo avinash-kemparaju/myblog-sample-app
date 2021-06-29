@@ -1,0 +1,12 @@
+<div class="card mt-3 ms-3" style="width: 50rem;">
+  <div class="card-body p-3">
+    <%= form_for @category do |category| %>
+      <div class="mb-3">
+        <%= category.label :name, "New Category", class: "form-label" %>
+        <%= category.text_field :name, class: "form-control" %>
+      </div>
+
+      <%= category.submit class:"btn btn-primary" %>
+    <% end %>
+  </div>
+</div>
