@@ -11,7 +11,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20210629142219) do
+ActiveRecord::Schema.define(:version => 20210630034053) do
+
+  create_table "article_categories", :force => true do |t|
+    t.integer  "article_id"
+    t.integer  "category_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
 
   create_table "articles", :force => true do |t|
     t.string   "title"
