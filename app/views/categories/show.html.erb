@@ -1,4 +1,7 @@
 <%= render 'common/titlecard', title: @category.name, subtitle: "Created #{time_ago_in_words(@category.created_at)}" %>
+<%= link_to 'Edit', edit_category_path(@category), class:"badge rounded-pill bg-danger ms-4 mt-2" %>
+
+
 <div class="digg_pagination position-relative top-0 start-50 translate-middle mt-3", style="width: 50rem;">
   <%= paginate @articles %>
 </div>

@@ -24,6 +24,20 @@ class CategoriesController < ApplicationController
     end
   end
 
+  def edit
+    @category = Category.find(params[:id])
+  end
+
+  def update
+    @category = Category.find(params[:id])
+    if @category.update_attributes(params[:category])
+      flash[:notice] = 'Category updated successfully'
+    else
+      flash[:alert] = 'Category update failed'
+    end
+    redirect_to @category
+  end
+
   private
 
   def require_admin
