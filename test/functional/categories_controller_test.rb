@@ -14,7 +14,7 @@ class CategoriesControllerTest < ActionController::TestCase
   end
 
   test 'should get new' do
-    sign_in_as(@admin_user)
+    sign_in_with_session(@admin_user)
     get :new
     assert_response :success
   end
@@ -25,7 +25,7 @@ class CategoriesControllerTest < ActionController::TestCase
   end
 
   test 'should create category' do
-    sign_in_as(@admin_user)
+    sign_in_with_session(@admin_user)
     assert_difference('Category.count', 1) do
       post :create, category: { name: 'Travel' }
     end

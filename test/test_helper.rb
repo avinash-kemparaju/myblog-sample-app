@@ -10,7 +10,11 @@ class ActiveSupport::TestCase
   fixtures :all
 
   # Add more helper methods to be used by all tests here...
-  def sign_in_as(user)
+  def sign_in_with_api(user)
+    post signin_path, session: { email: user.email, password: '123456' }
+  end
+
+  def sign_in_with_session(user)
     session[:user_id] = user.id
   end
 end
