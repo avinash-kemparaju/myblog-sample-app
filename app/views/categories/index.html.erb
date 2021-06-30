@@ -1,2 +1,5 @@
 <%= render 'common/titlecard', title: 'Categories', subtitle: "total #{category_count} articles" %>
+<div class="digg_pagination position-relative top-0 start-50 translate-middle mt-3", style="width: 50rem;">
+  <%= paginate @categories %>
+</div>
 <%= render 'common/mini-categories' %>
