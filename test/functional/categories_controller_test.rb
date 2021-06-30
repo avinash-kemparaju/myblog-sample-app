@@ -3,6 +3,9 @@ require 'test_helper'
 class CategoriesControllerTest < ActionController::TestCase
   setup do
     @category = Category.create(name: 'Sports')
+    @admin_user = User.create(username: 'Avinash',
+                              password: '123456', role: 2,
+                              email: 'avinash@test.com')
   end
 
   test 'should get index' do
@@ -11,6 +14,7 @@ class CategoriesControllerTest < ActionController::TestCase
   end
 
   test 'should get new' do
+    sign_in_as(@admin_user)
     get :new
     assert_response :success
   end
@@ -21,10 +25,18 @@ class CategoriesControllerTest < ActionController::TestCase
   end
 
   test 'should create category' do
+    sign_in_as(@admin_user)
     assert_difference('Category.count', 1) do
       post :create, category: { name: 'Travel' }
     end
     assert_redirected_to category_path(assigns(:category))
+  end
+
+  test 'should not create category is not admin' do
+    assert_no_difference('Category.count') do
+      post :create, category: { name: 'Sports' }
+    end
+    assert_redirected_to categories_path
   end
 
   # test "should get edit" do
