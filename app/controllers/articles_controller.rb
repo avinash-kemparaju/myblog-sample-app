@@ -1,7 +1,7 @@
 class ArticlesController < ApplicationController
-  before_filter :set_article, only: [:show, :edit, :update, :destroy]
-  before_filter :require_user, except: [:new, :show, :index]
-  before_filter :require_correct_user, only: [:edit, :update, :destroy]
+  before_filter :set_article, only: %i[show edit update destroy]
+  before_filter :require_user, except: %i[new show index]
+  before_filter :require_correct_user, only: %i[edit update destroy]
 
   def index
     @articles = Article.page(params[:page]).per(3)
@@ -16,19 +16,17 @@ class ArticlesController < ApplicationController
     @article.user_id = current_user.id
 
     if @article.save
-      flash[:notice] = "Article created successfully"
+      flash[:notice] = 'Article created successfully'
       redirect_to @article
     else
-      flash[:notice] = "Article creation failed"
+      flash[:notice] = 'Article creation failed'
       redirect_to current_user
     end
   end
 
-  def edit
-  end
+  def edit; end
 
-  def show
-  end
+  def show; end
 
   def update
     if @article.update_attributes(params[:article])
@@ -53,7 +51,7 @@ class ArticlesController < ApplicationController
 
   def require_correct_user
     if current_user != @article.user
-      flash[:alert] = "You are not authorized"
+      flash[:alert] = 'You are not authorized'
       redirect_to current_user
     end
   end
