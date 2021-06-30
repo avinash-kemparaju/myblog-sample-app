@@ -1,1 +1,2 @@
 <%= render 'common/titlecard', title: @category.name, subtitle: "Created #{time_ago_in_words(@category.created_at)}" %>
+<%= render 'common/miniarticles', articles: @category.articles %>
