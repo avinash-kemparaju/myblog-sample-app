@@ -2,6 +2,7 @@
   <div class="card ms-3 mt-3" style="width: 18rem;">
     <div class="card-body">
       <h5 class="card-title"><%= link_to category.name, category_path(category) %></h5>
+      <h6 class="card-subtitle mb-2 text-muted"><%= pluralize(category.articles.count, 'Article') %></h6>
     </div>
   </div>
 <% end %>
