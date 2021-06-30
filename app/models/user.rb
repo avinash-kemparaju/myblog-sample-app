@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   has_many :articles, dependent: :destroy
-  attr_accessible :email, :username, :password
+  attr_accessible :email, :username, :password, :role
 
   EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, presence: true,

@@ -1,5 +1,5 @@
 Myblog::Application.routes.draw do
-  root :to => 'articles#index'
+  root to: 'articles#index'
   resources :users
   resources :articles
   get 'signup', to: 'users#new'
